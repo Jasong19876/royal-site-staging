@@ -708,3 +708,8 @@ form .grid.g2 { gap: 0 24px; }
   footer .fcol:nth-child(2) h4 { grid-column: 1 / -1; }
   footer .fcol:nth-child(2) a:last-child { margin-bottom: 12px; }
 }
+
+/* wall/shower panel details: even spacing under the tag, even when there is no name line */
+#wpName:empty { display: none; }
+.info > .tag + .feat-specs, .info > .tag + .badges { margin-top: 18px; }
+.info .badges { margin-top: 18px; }
