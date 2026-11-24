@@ -100,12 +100,12 @@
   <section id="colors">
     <div class="sec-head"><h2 id="wpGridTitle">All finishes</h2><p>Pick one to see more photos.</p></div>
     <div class="grid g4 colorgrid" id="colorgrid">
-      <div class="card on" data-i="1"><div class="img sq" data-img="Color 2: wall panel sample"></div><div class="pfname">DGM717</div><div class="pfsub">Color 2</div></div>
-      <div class="card" data-i="2"><div class="img sq" data-img="Color 5: wall panel sample"></div><div class="pfname">DGM239</div><div class="pfsub">Color 5</div></div>
-      <div class="card" data-i="3"><div class="img sq" data-img="Color 6: wall panel sample"></div><div class="pfname">DGM246</div><div class="pfsub">Color 6</div></div>
-      <div class="card" data-i="4"><div class="img sq" data-img="Color 7: wall panel sample"></div><div class="pfname">DGM501</div><div class="pfsub">Color 7</div></div>
-      <div class="card" data-i="5"><div class="img sq" data-img="Color 8: wall panel sample"></div><div class="pfname">DGM197</div><div class="pfsub">Color 8</div></div>
-      <div class="card" data-i="6"><div class="img sq" data-img="Color 10: wall panel sample"></div><div class="pfname">DGM53</div><div class="pfsub">Color 10</div></div>
+      <div class="card on" data-i="1"><div class="img sq" data-img="DGM717: wall panel sample"></div><div class="pfname">DGM717</div></div>
+      <div class="card" data-i="2"><div class="img sq" data-img="DGM239: wall panel sample"></div><div class="pfname">DGM239</div></div>
+      <div class="card" data-i="3"><div class="img sq" data-img="DGM246: wall panel sample"></div><div class="pfname">DGM246</div></div>
+      <div class="card" data-i="4"><div class="img sq" data-img="DGM501: wall panel sample"></div><div class="pfname">DGM501</div></div>
+      <div class="card" data-i="5"><div class="img sq" data-img="DGM197: wall panel sample"></div><div class="pfname">DGM197</div></div>
+      <div class="card" data-i="6"><div class="img sq" data-img="DGM53: wall panel sample"></div><div class="pfname">DGM53</div></div>
       <div class="card" data-i="7"><div class="img sq" data-img="DGM109: wall panel sample"></div><div class="pfname">DGM109</div></div>
     </div>
   </section>
@@ -127,7 +127,7 @@
   </div>
   <div class="fbottom"><span>&copy; <span data-year>2026</span> Royal Building Outlets Inc. &middot; Room photos courtesy of our suppliers.</span><span class="flinks"><a href="about.html">About</a><a href="locations.html">Locations</a><a href="contact.html">Contact</a></span></div>
 </div></footer>
-<a class="chat" href="contact.html" aria-label="Send us a message"></a>
+<a class="chat" href="mailto:royalbuildingoutlets@gmail.com" aria-label="Email us at royalbuildingoutlets@gmail.com" title="Email us"></a>
 
 <script>
 (function () {
@@ -170,7 +170,7 @@
     for (var i = 1; i <= n; i++) {
       var c = document.createElement('div'), code = wall ? FILES[i - 1] : i;
       c.className = 'card'; c.dataset.i = i;
-      c.innerHTML = '<div class="img sq"></div>' + (wall ? '<div class="pfname">' + (CODES[code] || 'Color ' + code) + '</div>' + (SOLO[code] ? '' : '<div class="pfsub">Color ' + code + '</div>') : '');
+      c.innerHTML = '<div class="img sq"></div>' + (wall ? '<div class="pfname">' + (CODES[code] || code) + '</div>' + '' : '');
       grid.appendChild(c);
     }
     cards = grid.querySelectorAll('.card');
@@ -195,7 +195,7 @@
     document.getElementById('wpHint').textContent = k.hint;
     document.getElementById('wpGridTitle').textContent = wall ? 'All finishes' : 'All shower panels';
     var nm = document.getElementById('wpName');
-    nm.hidden = !wall; nm.className = 'bb-code'; nm.textContent = wall ? (CODES[f] || 'Color ' + f) : '';
+    nm.hidden = !wall; nm.className = 'bb-code'; nm.textContent = wall ? (CODES[f] || f) : '';
     document.getElementById('estimate').href = 'contact.html?topic=' + encodeURIComponent(k.topic) + (wall ? '&item=' + encodeURIComponent(solo ? CODES[f] : CODES[f] ? CODES[f] + ' (color ' + f + ')' : 'color ' + f) : '');
     buttons.forEach(function (b) {
       var on = b.dataset.kind === kind;
