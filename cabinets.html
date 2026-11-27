@@ -94,6 +94,7 @@
         <div class="specs">
           <div class="spec-code" id="specCode"></div>
           <div class="spec-title" id="specTitle"></div>
+          <div class="oos-note" id="cabStock" hidden style="margin:8px 0 0">Out of stock</div>
           <div class="rows" id="specRows"></div>
           <div class="spec-cta"><a class="btn solid txt" id="cabEst" href="contact.html?topic=Cabinets">Get an estimate</a><p class="est-hint">List every cabinet code you need in your message.</p></div>
         </div>
@@ -120,6 +121,7 @@
 </div></footer>
 <a class="chat" href="mailto:royalbuildingoutlets@gmail.com" aria-label="Email us at royalbuildingoutlets@gmail.com" title="Email us"></a>
 
+<script src="products.js?v=20261127"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/ColladaLoader.js"></script>
@@ -140,6 +142,18 @@
   };
   var list = document.getElementById('cablist');
   var detail = document.getElementById('detail');
+  /* cabinets listed under [cabinets out of stock] in products.txt */
+  var OUT = {};
+  function markStock() {
+    list.querySelectorAll('.item').forEach(function (d) {
+      var out = !!OUT[d.dataset.code.toUpperCase()], tag = d.querySelector('.oos-note');
+      d.classList.toggle('oos', out);
+      if (out && !tag) d.querySelector('.name').insertAdjacentHTML('beforeend', ' <span class="oos-note">Out of stock</span>');
+      if (!out && tag) tag.remove();
+    });
+    document.getElementById('cabStock').hidden = !OUT[(document.getElementById('specCode').textContent || '').toUpperCase()];
+  }
+  if (window.loadProducts) loadProducts(function (P) { (P ? P.cabinetsOut : []).forEach(function (c) { OUT[c.toUpperCase()] = 1; }); markStock(); });
   var mark = document.getElementById('modelmark');
 
   /* ---------- 3D viewer ----------
@@ -373,6 +387,7 @@
       for (var i = 0; i < 3; i++) out += '<div class="r"><div class="line"></div><div class="line v"></div></div>';
     }
     rows.innerHTML = out;
+    markStock();
     document.getElementById('cabEst').href = 'contact.html?topic=Cabinets&item=' + encodeURIComponent(code);
   }
 
@@ -397,6 +412,7 @@
       list.appendChild(d);
     });
     showCab(CABS[slug][0]);
+    markStock();
   }
 
   function choose(slug) {
