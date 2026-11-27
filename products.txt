@@ -26,8 +26,8 @@ R52       | yes
 R53       | yes
 R54       | yes
 R55       | yes
-R56       | yes
-R57       | yes
+R56       | no
+R57       | no
 R58       | yes
 R59       | yes
 R95       | yes
@@ -53,7 +53,7 @@ RH07      | yes
 RH08      | yes
 RH09      | yes
 RH10      | yes
-RH11      | yes
+RH11      | no
 RH12      | yes
 RH13      | yes
 RH14      | yes
@@ -68,8 +68,8 @@ R82       | yes
 [countertops]
 # Code    | Countertop 26" in stock | Island 36" in stock | Island 52" in stock
 # PHOTOS: 1 per color in images/Countertops/web/<code>.jpg
-T2011     | yes | no  | yes
-T307      | yes | no  | yes
+T2011     | yes | no  | no
+T307      | no | no  | yes
 T392      | yes | yes | yes
 
 
